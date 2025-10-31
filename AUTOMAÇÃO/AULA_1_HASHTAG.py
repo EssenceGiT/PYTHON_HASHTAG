@@ -17,7 +17,7 @@ pyautogui.write("chrome")
 pyautogui.press("enter")
 
 pyautogui.click(x=947, y=606)
-pyautogui.click(x=851, y=38)
+# pyautogui.click(x=703, y=96)
 time.sleep(2)
 
 
@@ -36,19 +36,20 @@ pyautogui.press("tab") # passando pro próximo campo
 pyautogui.write("python123")
 # pyautogui.click(x=955, y=638) # clique no botao de login
 pyautogui.press("enter")
-time.sleep(2)
-
+time.sleep(3)
+  # clicar no campo de código
+pyautogui.click (x=580, y=435)
 # Passo 3: Importar a base de produtos pra cadastrar
 import pandas as pd
 
-tabela = pd.read_csv("produtos.csv")
+tabela = pd.read_csv("produtos.csv", sep=";")
 
 print(tabela)
 
 # Passo 4: Cadastrar um produto
 for linha in tabela.index:
     # clicar no campo de código
-    pyautogui.click(x=736, y=443)
+    # pyautogui.click (x=580, y=435)
     # pegar da tabela o valor do campo que a gente quer preencher
     # preencher o campo
     pyautogui.write(str(tabela.loc[linha, "codigo"]))

@@ -2,7 +2,7 @@ import streamlit as st
 from openai import OpenAI
 
 # Inicializar a API do OpenAI com sua chave de API
-api_key = "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"
+api_key = "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"
 modelo = OpenAI(api_key=api_key)
 
 # Escrever um título usando markdown no app Streamlit
