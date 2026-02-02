@@ -4,8 +4,9 @@ from openai import OpenAI
 
 # Inicializar a API do OpenAI com sua chave de API
 # Use variável de ambiente (OPENAI_API_KEY) ou secrets do Streamlit
-api_key = st.secrets.get("OPENAI_API_KEY") if hasattr(st, "secrets") else None
-if not api_key:
+try:
+    api_key = st.secrets["OPENAI_API_KEY"]
+except:
     api_key = os.getenv("OPENAI_API_KEY")
 
 if not api_key:
