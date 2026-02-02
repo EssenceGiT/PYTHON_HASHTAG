@@ -7,10 +7,21 @@
 
 # streamlit - frontend e backend
 
+import os
 import streamlit as st
 from openai import OpenAI
 
-modelo = OpenAI(api_key="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")
+# Use variável de ambiente ou Streamlit secrets
+try:
+    api_key = st.secrets["OPENAI_API_KEY"]
+except:
+    api_key = os.getenv("OPENAI_API_KEY")
+
+if not api_key:
+    st.error("Configure OPENAI_API_KEY nas secrets ou variáveis de ambiente")
+    st.stop()
+
+modelo = OpenAI(api_key=api_key)
 
 st.write("### ChatBot com IA") # markdown
 
