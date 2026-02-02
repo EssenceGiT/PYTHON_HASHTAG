@@ -1,8 +1,17 @@
+import os
 import streamlit as st
 from openai import OpenAI
 
 # Inicializar a API do OpenAI com sua chave de API
-api_key = "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"
+# Use variável de ambiente (OPENAI_API_KEY) ou secrets do Streamlit
+api_key = st.secrets.get("OPENAI_API_KEY") if hasattr(st, "secrets") else None
+if not api_key:
+    api_key = os.getenv("OPENAI_API_KEY")
+
+if not api_key:
+    st.error("Chave da OpenAI não encontrada. Defina OPENAI_API_KEY em variáveis de ambiente ou Streamlit Secrets.")
+    st.stop()
+
 modelo = OpenAI(api_key=api_key)
 
 # Escrever um título usando markdown no app Streamlit
